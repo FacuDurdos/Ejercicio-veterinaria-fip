@@ -3,6 +3,7 @@ export class GeneradorID {
 
   static generarId(): number {
     let nuevaId : number;
+    
     do {
       nuevaId = Math.floor(Math.random() * 99999);
     } while (this.idGeneradas.includes(nuevaId));
