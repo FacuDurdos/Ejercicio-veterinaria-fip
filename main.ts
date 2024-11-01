@@ -8,14 +8,13 @@ function main(): void {
   
   while (ejecutando) {
     readlineSync.question(`Seleccione que accion desea realizar:
-    1. Agregar cliente
-    2. Agregar paciente
-    3. Agregar sucursal
-    4. Agregar proveedor
+    1. Ir a seccion Clientes
+    2. Ir a seccion Pacientes
+    3. Ir a seccion Sucursales
+    4. Ir a seccion Proveedores
     5. Atender cliente
-    6. Ver lista de clientes
-    7. Ver lista de pacientes
-    8. Salir
+    6. Modificar datos de la veterinaria
+    7. Salir
   `);
       
   }
