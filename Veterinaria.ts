@@ -139,40 +139,40 @@ export class Veterinaria {
   }
 
   //Metodos delete
-  public borrarSucursal(sucursalId: number): void {
+  public eliminarSucursal(sucursalId: number): void {
     if (this.verificarSucursal(sucursalId)) {
       this.sucursales = this.sucursales.filter((sucursal) => sucursal.getId() !== sucursalId);
       GeneradorID.eliminarId(sucursalId);
-      console.log(`Se borro la sucursal con ID ${sucursalId} correctamente.`);
+      console.log(`Se elimino la sucursal con ID ${sucursalId} correctamente.`);
     } else {
       console.log(`Error: La sucursal con ID ${sucursalId} no existe.`);
     }
   }
-  public borrarProveedor(proveedorId: number): void {
+  public eliminarProveedor(proveedorId: number): void {
     if (this.verificarProveedor(proveedorId)) {
       this.proveedores = this.proveedores.filter((proveedor) => proveedor.getId() !== proveedorId);
       GeneradorID.eliminarId(proveedorId);
-      console.log(`Se borro el proveedor con ID ${proveedorId} correctamente.`);
+      console.log(`Se elimino el proveedor con ID ${proveedorId} correctamente.`);
     } else {
       console.log(`Error: El proveedor con ID ${proveedorId} no existe.`);
   }
 }
 
-  public borrarCliente(clienteId: number): void {
+  public eliminarCliente(clienteId: number): void {
     if (this.verificarCliente(clienteId)) {
       this.clientes = this.clientes.filter((cliente) => cliente.getId() !== clienteId);
       this.pacientes = this.pacientes.filter((mascota) => mascota.getId() !== clienteId);
       GeneradorID.eliminarId(clienteId);
-      console.log(`Se borro el cliente con ID ${clienteId} y sus mascotas correctamente.`);
+      console.log(`Se elimino el cliente con ID ${clienteId} y sus mascotas correctamente.`);
     } else {
       console.error(`Error: El cliente con ID ${clienteId} no existe.`);
     }
   }
 
-  public borrarPaciente(pacienteId: number, nombrePaciente: string): void {
+  public eliminarPaciente(pacienteId: number, nombrePaciente: string): void {
     if (this.verificarPaciente(pacienteId)) {
       this.pacientes = this.pacientes.filter((paciente) => paciente.getId() !== pacienteId && paciente.getNombre() !== nombrePaciente);
-      console.log(`Se borro el paciente ${nombrePaciente} con ID ${pacienteId} correctamente.`);
+      console.log(`Se elimino el paciente ${nombrePaciente} con ID ${pacienteId} correctamente.`);
     } else {
       console.error(`Error: El paciente ${nombrePaciente} con ID ${pacienteId} no existe.`);
     }
