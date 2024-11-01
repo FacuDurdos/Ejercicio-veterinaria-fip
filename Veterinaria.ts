@@ -169,13 +169,12 @@ export class Veterinaria {
     }
   }
 
-  public borrarPaciente(pacienteId: number): void {
+  public borrarPaciente(pacienteId: number, nombrePaciente: string): void {
     if (this.verificarPaciente(pacienteId)) {
-      this.pacientes = this.pacientes.filter((paciente) => paciente.getId() !== pacienteId);
-      GeneradorID.eliminarId(pacienteId);
-      console.log(`Se borro el paciente con ID ${pacienteId} correctamente.`);
+      this.pacientes = this.pacientes.filter((paciente) => paciente.getId() !== pacienteId && paciente.getNombre() !== nombrePaciente);
+      console.log(`Se borro el paciente ${nombrePaciente} con ID ${pacienteId} correctamente.`);
     } else {
-      console.error(`Error: El paciente con ID ${pacienteId} no existe.`);
+      console.error(`Error: El paciente ${nombrePaciente} con ID ${pacienteId} no existe.`);
     }
   }
 
