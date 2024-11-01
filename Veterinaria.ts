@@ -1,6 +1,3 @@
-/* atender (aumenta visitas del cliente), getDueño (para obtener el dueño de una mascota),
-  getMascotas (para obtener las mascotas de un dueño) */
-
 import { Cliente } from "./Cliente";
 import { Paciente } from "./Paciente";
 import { Proveedor } from "./Proveedor";
@@ -26,6 +23,18 @@ export class Veterinaria {
     this.pacientes = [];
   }
 
+  public atender(clienteId: number): void {
+    if (!this.verificarCliente(clienteId)) {
+      console.error(`Error: El cliente con ID ${clienteId} no existe.`);
+    } else {
+      let cliente: Cliente | undefined = this.clientes.find((cliente) => cliente.getId() === clienteId);
+      if (cliente) {
+        cliente.setVisitas();
+        console.log(`El cliente con ID ${clienteId} se encuentra en atención.`);
+      }
+    }
+  }
+
   //Getters
   public getId(): number {
     return this.id;
@@ -47,6 +56,38 @@ export class Veterinaria {
   }
   public getClientes(): Array<Cliente> {
     return this.clientes;
+  }
+
+  public getDueño(mascotaId: number): Cliente | undefined {
+    if (!this.verificarPaciente(mascotaId)) {
+      console.error(`Error: La mascota con ID ${mascotaId} no existe.`);
+      return undefined;
+    } else {
+      let dueño: Cliente | undefined = this.clientes.find((cliente) => cliente.getId() === mascotaId);
+      if (dueño instanceof Cliente) {
+        console.log(`${dueño.getNombre()} es el dueño de las mascotas con ID ${mascotaId}.`);
+        return dueño;
+      } else {
+        console.error(`Error: El dueño de las mascotas con ID ${mascotaId} no existe.`);
+        return undefined;
+      }
+    }
+  }
+
+  public getMascotas(clienteId: number): Paciente[] | undefined {
+    if (!this.verificarCliente(clienteId)) {
+      console.error(`Error: El cliente con ID ${clienteId} no existe.`);
+      return undefined;
+    } else {
+      let mascotas: Paciente[] = this.pacientes.filter((mascota) => mascota.getId() === clienteId);
+      if (mascotas.length > 0) {
+        console.log(`Las mascotas del cliente con ID ${clienteId} son: ${mascotas.map(m => m.getNombre()).join(", ")}.`);
+        return mascotas;
+      } else {
+        console.error(`Error: No existen mascotas del cliente con ID ${clienteId}.`);
+        return undefined;
+      }
+    }
   }
 
   //Setters

@@ -42,10 +42,6 @@ export class Cliente {
   }
   public setVisitas(): void {
     this.visitas++;
-    this.checkVip();
-  }
-
-  private checkVip(): void {
     if (this.visitas >= 5) {
       this.setEsVip();
     }
