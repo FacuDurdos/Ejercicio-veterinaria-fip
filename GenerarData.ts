@@ -11,19 +11,23 @@ export function generarData(): Veterinaria {
     veterinaria.ingresarSucursal(new Sucursal("Av. Mitre 1234"));
     veterinaria.ingresarSucursal(new Sucursal("Av. Rivadavia 1234"));
 
-    veterinaria.ingresarCliente(new Cliente("Juan Perez", 12345678));
-    veterinaria.ingresarCliente(new Cliente("Maria Rodriguez", 87654321));
-    veterinaria.ingresarCliente(new Cliente("Carlos Lopez", 13579246));
-    veterinaria.ingresarCliente(new Cliente("Ana Garcia", 24681357));
+    let juanPerez = new Cliente("Juan Perez", 12345678);
+    veterinaria.ingresarCliente(juanPerez);
+    let mariaRodriguez = new Cliente("Maria Rodriguez", 87654321);
+    veterinaria.ingresarCliente(mariaRodriguez);
+    let carlosLopez = new Cliente("Carlos Lopez", 13579246);
+    veterinaria.ingresarCliente(carlosLopez);
+    let anaGarcia = new Cliente("Ana Garcia", 24681357);
+    veterinaria.ingresarCliente(anaGarcia);
 
-    veterinaria.ingresarPaciente(new Paciente("Paciente A", "perro", 12345678));
-    veterinaria.ingresarPaciente(new Paciente("Paciente B", "gato", 87654321));
-    veterinaria.ingresarPaciente(new Paciente("Paciente C", "perro", 13579246));
-    veterinaria.ingresarPaciente(new Paciente("Paciente D", "gato", 24681357));
-    veterinaria.ingresarPaciente(new Paciente("Paciente E", "exotica", 12345678));
-    veterinaria.ingresarPaciente(new Paciente("Paciente F", "exotica", 87654321));
-    veterinaria.ingresarPaciente(new Paciente("Paciente G", "exotica", 13579246));
-    veterinaria.ingresarPaciente(new Paciente("Paciente H", "exotica", 24681357));
+    veterinaria.ingresarPaciente(new Paciente("Paciente A", "perro", juanPerez.getId()));
+    veterinaria.ingresarPaciente(new Paciente("Paciente B", "gato", mariaRodriguez.getId()));
+    veterinaria.ingresarPaciente(new Paciente("Paciente C", "perro", carlosLopez.getId()));
+    veterinaria.ingresarPaciente(new Paciente("Paciente D", "gato", anaGarcia.getId()));
+    veterinaria.ingresarPaciente(new Paciente("Paciente E", "exotica", juanPerez.getId()));
+    veterinaria.ingresarPaciente(new Paciente("Paciente F", "exotica", mariaRodriguez.getId()));
+    veterinaria.ingresarPaciente(new Paciente("Paciente G", "exotica", carlosLopez.getId()));
+    veterinaria.ingresarPaciente(new Paciente("Paciente H", "exotica", anaGarcia.getId()));
 
 
     veterinaria.ingresarProveedor(new Proveedor("Proveedor A", 32156489));
