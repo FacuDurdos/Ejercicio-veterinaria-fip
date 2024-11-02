@@ -1,9 +1,11 @@
 import { menuClientes } from "./menuClientes";
 import { Veterinaria } from "./Veterinaria";
 import * as readlineSync from 'readline-sync';
+import { generarData } from "./GenerarData";
 
-function main(): void {
-  let veterinaria: Veterinaria = new Veterinaria("Veterinaria Olavarria", "Av. Colon 1234");
+let veterinaria = generarData();
+
+function ejecutar(veterinaria: Veterinaria): void {
   let ejecutando: boolean = true;
   console.log(`Sistema de gestion de ${veterinaria.getNombre()}.`);	
   
@@ -48,4 +50,4 @@ function main(): void {
   }
 }
 
-main();
+ejecutar(veterinaria);
