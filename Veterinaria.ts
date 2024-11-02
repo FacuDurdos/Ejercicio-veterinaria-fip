@@ -128,9 +128,7 @@ export class Veterinaria {
   }
 
   public ingresarPaciente(nuevoPaciente: Paciente): void {
-    if (this.verificarPaciente(nuevoPaciente.getId())) {
-      console.error(`Error: El paciente con ID ${nuevoPaciente.getId()} ya existe.`);
-    } else if (!this.verificarCliente(nuevoPaciente.getId())) {
+    if (!this.verificarCliente(nuevoPaciente.getId())) {
       console.error(`Error: No existe el dueño de ${nuevoPaciente.getNombre()}.`);
     } else {
       this.pacientes.push(nuevoPaciente);

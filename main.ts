@@ -7,7 +7,7 @@ let veterinaria = generarData();
 
 function ejecutar(veterinaria: Veterinaria): void {
   let ejecutando: boolean = true;
-  console.log(`Sistema de gestion de ${veterinaria.getNombre()}.`);	
+  console.log(`\nSistema de gestion de ${veterinaria.getNombre()}.`);	
   
   while (ejecutando) {
     let accion = readlineSync.question(`Seleccione que accion desea realizar:
