@@ -47,3 +47,5 @@ function main(): void {
     }
   }
 }
+
+main();
