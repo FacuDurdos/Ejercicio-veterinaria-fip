@@ -21,10 +21,10 @@ function verMascotas(veterinaria: Veterinaria): void {
       console.log(`Las mascotas del cliente ${cliente.getNombre()} son:`);
       console.table(mascotas);
     } else {
-      console.log(`No existen mascotas del cliente ${cliente.getNombre()} ID ${clienteId}.`);
+      console.error(`Error: No existen mascotas del cliente ${cliente.getNombre()} ID ${clienteId}.`);
     }
   } else {
-    console.log(`No existe el cliente con ID ${clienteId}.`);
+    console.error(`Error: No existe el cliente con ID ${clienteId}.`);
   }
 }
 
@@ -42,7 +42,7 @@ function eliminarCliente(veterinaria: Veterinaria): void {
     veterinaria.eliminarCliente(clienteIdEliminar);
     console.log("Cliente eliminado correctamente.");
   } else {
-    console.log(`No existe el cliente con ID ${clienteIdEliminar}.`);
+    console.error(`Error: No existe el cliente con ID ${clienteIdEliminar}.`);
   }
 }
 
@@ -74,7 +74,7 @@ export function menuClientes(veterinaria: Veterinaria): void {
         enClientes = false;
         break;
       default:
-        console.log("Opcion no valida");
+        console.error("Error: Opcion no valida");
         break;
     }
   }

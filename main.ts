@@ -44,7 +44,7 @@ function ejecutar(veterinaria: Veterinaria): void {
         ejecutando = false;
         break;
       default:
-        console.log("Opcion no valida");
+        console.error("Error: Opcion no valida");
         break;
     }
   }

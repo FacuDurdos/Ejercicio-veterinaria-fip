@@ -143,7 +143,7 @@ export class Veterinaria {
       GeneradorID.eliminarId(sucursalId);
       console.log(`Se elimino la sucursal con ID ${sucursalId} correctamente.`);
     } else {
-      console.log(`Error: La sucursal con ID ${sucursalId} no existe.`);
+      console.error(`Error: La sucursal con ID ${sucursalId} no existe.`);
     }
   }
   public eliminarProveedor(proveedorId: number): void {
@@ -152,7 +152,7 @@ export class Veterinaria {
       GeneradorID.eliminarId(proveedorId);
       console.log(`Se elimino el proveedor con ID ${proveedorId} correctamente.`);
     } else {
-      console.log(`Error: El proveedor con ID ${proveedorId} no existe.`);
+      console.error(`Error: El proveedor con ID ${proveedorId} no existe.`);
   }
 }
 
