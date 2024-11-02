@@ -5,7 +5,7 @@ import { Paciente } from './Paciente';
 
 function verClientes(veterinaria: Veterinaria): void {
   let clientes: Cliente[] = veterinaria.getClientes();
-  if (clientes.length == 0) {
+  if (clientes.length === 0) {
     console.log("No existen clientes.");
   } else {
     console.table(clientes);
@@ -14,7 +14,7 @@ function verClientes(veterinaria: Veterinaria): void {
 
 function verMascotas(veterinaria: Veterinaria): void {
   let clienteId: number = readlineSync.questionInt("Ingrese el ID del cliente: ");
-  let cliente: Cliente | undefined = veterinaria.getClientes().find((cliente) => cliente.getId() == clienteId);
+  let cliente: Cliente | undefined = veterinaria.getClientes().find((cliente) => cliente.getId() === clienteId);
   if (cliente) {
     let mascotas: Paciente[] = veterinaria.getMascotas(clienteId);
     if (mascotas) {
@@ -38,7 +38,7 @@ function agregarCliente(veterinaria: Veterinaria): void {
 
 function eliminarCliente(veterinaria: Veterinaria): void {
   let clienteIdEliminar: number = readlineSync.questionInt("Ingrese el ID del cliente a eliminar: ");
-  if (veterinaria.getClientes().find((cliente) => cliente.getId() ==(clienteIdEliminar))) {
+  if (veterinaria.getClientes().find((cliente) => cliente.getId() ===(clienteIdEliminar))) {
     veterinaria.eliminarCliente(clienteIdEliminar);
     console.log("Cliente eliminado correctamente.");
   } else {
