@@ -27,7 +27,7 @@ export class Veterinaria {
     if (!this.verificarCliente(clienteId)) {
       console.error(`Error: El cliente con ID ${clienteId} no existe.`);
     } else {
-      let cliente: Cliente | undefined = this.clientes.find((cliente) => cliente.getId() === clienteId);
+      let cliente: Cliente | undefined = this.clientes.find((cliente) => cliente.getId() == clienteId);
       if (cliente) {
         cliente.setVisitas();
         console.log(`El cliente con ID ${clienteId} se encuentra en atención.`);
@@ -63,7 +63,7 @@ export class Veterinaria {
       console.error(`Error: La mascota con ID ${mascotaId} no existe.`);
       return undefined;
     } else {
-      let dueño: Cliente | undefined = this.clientes.find((cliente) => cliente.getId() === mascotaId);
+      let dueño: Cliente | undefined = this.clientes.find((cliente) => cliente.getId() == mascotaId);
       if (dueño instanceof Cliente) {
         console.log(`${dueño.getNombre()} es el dueño de las mascotas con ID ${mascotaId}.`);
         return dueño;
@@ -79,7 +79,7 @@ export class Veterinaria {
       console.error(`Error: El cliente con ID ${clienteId} no existe.`);
       return undefined;
     } else {
-      let mascotas: Paciente[] = this.pacientes.filter((mascota) => mascota.getId() === clienteId);
+      let mascotas: Paciente[] = this.pacientes.filter((mascota) => mascota.getId() == clienteId);
       if (mascotas.length > 0) {
         console.log(`Las mascotas del cliente con ID ${clienteId} son: ${mascotas.map(m => m.getNombre()).join(", ")}.`);
         return mascotas;
@@ -178,18 +178,18 @@ export class Veterinaria {
 
   //Metodos internos
   private verificarCliente(clienteId: number): boolean {
-    return this.clientes.some((cliente) => cliente.getId() === clienteId);
+    return this.clientes.some((cliente) => cliente.getId() == clienteId);
   }
 
   private verificarProveedor(proveedorId: number): boolean {
-    return this.proveedores.some((proveedor) => proveedor.getId() === proveedorId);
+    return this.proveedores.some((proveedor) => proveedor.getId() == proveedorId);
   }
 
   private verificarSucursal(sucursalId: number): boolean {
-    return this.sucursales.some((sucursal) => sucursal.getId() === sucursalId);
+    return this.sucursales.some((sucursal) => sucursal.getId() == sucursalId);
   }
 
   private verificarPaciente(pacienteId: number): boolean {
-    return this.pacientes.some((paciente) => paciente.getId() === pacienteId);
+    return this.pacientes.some((paciente) => paciente.getId() == pacienteId);
   }
 }
