@@ -1,5 +1,8 @@
-import { menuClientes } from "./menuClientes";
-import { Veterinaria } from "./Veterinaria";
+// TODO: CLASE DATOS CON PROPS ID/NOMBRE/DIRECCION/TELEFONO
+
+
+import { menuClientes } from "../menus/menuClientes";
+import { Veterinaria } from "../models/Veterinaria";
 import * as readlineSync from 'readline-sync';
 import { generarData } from "./GenerarData";
 

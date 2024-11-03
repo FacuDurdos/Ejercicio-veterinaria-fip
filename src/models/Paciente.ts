@@ -1,7 +1,7 @@
 export class Paciente {
   private id: number;
   private nombre: string;
-  private especie: "perro" | "gato" | "exotica";
+  private especie: "perro" | "gato" | "exotica"; // TODO: SUBCLASES Y USAR FACTORY METHOD veterinariaFactory.crearPaciente("")
 
   constructor(nuevoNombre: string, nuevaEspecie: "perro" | "gato" | "exotica", clienteId: number) {
     this.id = clienteId;

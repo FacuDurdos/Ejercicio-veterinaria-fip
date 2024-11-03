@@ -1,4 +1,4 @@
-import { GeneradorID } from "./GeneradorID";
+import { GeneradorID } from "./src/app/GeneradorID";
 
 export class Sucursal {
   private id: number;

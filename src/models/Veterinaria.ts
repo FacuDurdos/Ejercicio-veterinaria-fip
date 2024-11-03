@@ -2,7 +2,7 @@ import { Cliente } from "./Cliente";
 import { Paciente } from "./Paciente";
 import { Proveedor } from "./Proveedor";
 import { Sucursal } from "./Sucursal";
-import { GeneradorID } from "./GeneradorID";
+import { GeneradorID } from "../app/GeneradorID";
 
 export class Veterinaria {
   private nombre: string;

@@ -1,7 +1,10 @@
+//TODO: FACTORY METHOD para crear clientes. veterinariaFactory.crearCliente("Juan Perez", 12345678);
+
+
 import * as readlineSync from 'readline-sync';
-import { Veterinaria } from "./Veterinaria";
-import { Cliente } from './Cliente';
-import { Paciente } from './Paciente';
+import { Veterinaria } from "../models/Veterinaria";
+import { Cliente } from '../models/Cliente';
+import { Paciente } from '../models/Paciente';
 
 function verClientes(veterinaria: Veterinaria): void {
   let clientes: Cliente[] = veterinaria.getClientes();
@@ -31,7 +34,7 @@ function verMascotas(veterinaria: Veterinaria): void {
 function agregarCliente(veterinaria: Veterinaria): void {
   let nombre: string = readlineSync.question("Ingrese el nombre del cliente: ");
   let telefono: number = readlineSync.questionInt("Ingrese el telefono del cliente: ");
-  let nuevoCliente: Cliente = new Cliente(nombre, telefono);
+  let nuevoCliente: Cliente = new Cliente(nombre, telefono); // veterinariaFactory.ingresarCliente(nombre, telefono);
   veterinaria.ingresarCliente(nuevoCliente);
   console.log("Cliente agregado correctamente.");
 }

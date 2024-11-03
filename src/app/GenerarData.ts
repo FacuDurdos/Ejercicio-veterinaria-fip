@@ -1,8 +1,8 @@
-import { Veterinaria } from "./Veterinaria";
-import { Sucursal } from "./Sucursal";
-import { Cliente } from "./Cliente";
-import { Proveedor } from "./Proveedor";
-import { Paciente } from "./Paciente";
+import { Veterinaria } from "../models/Veterinaria";
+import { Sucursal } from "../models/Sucursal";
+import { Cliente } from "../models/Cliente";
+import { Proveedor } from "../models/Proveedor";
+import { Paciente } from "../models/Paciente";
 
 export function generarData(): Veterinaria {
     let veterinaria: Veterinaria = new Veterinaria("Veterinaria Olavarria", "Av. Colon 1234");
