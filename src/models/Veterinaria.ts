@@ -63,12 +63,12 @@ export class Veterinaria {
       console.error(`Error: La mascota con ID ${mascotaId} no existe.`);
       return undefined;
     } else {
-      let dueño: Cliente | undefined = this.clientes.find((cliente) => cliente.getId() === mascotaId);
-      if (dueño instanceof Cliente) {
-        console.log(`${dueño.getNombre()} es el dueño de las mascotas con ID ${mascotaId}.`);
-        return dueño;
+      let duenio: Cliente | undefined = this.clientes.find((cliente) => cliente.getId() === mascotaId);
+      if (duenio instanceof Cliente) {
+        console.log(`${duenio.getNombre()} es el duenio de las mascotas con ID ${mascotaId}.`);
+        return duenio;
       } else {
-        console.error(`Error: El dueño de las mascotas con ID ${mascotaId} no existe.`);
+        console.error(`Error: El duenio de las mascotas con ID ${mascotaId} no existe.`);
         return undefined;
       }
     }
@@ -129,7 +129,7 @@ export class Veterinaria {
 
   public ingresarPaciente(nuevoPaciente: Paciente): void {
     if (!this.verificarCliente(nuevoPaciente.getId())) {
-      console.error(`Error: No existe el dueño de ${nuevoPaciente.getNombre()}.`);
+      console.error(`Error: No existe el duenio de ${nuevoPaciente.getNombre()}.`);
     } else {
       this.pacientes.push(nuevoPaciente);
       console.log(`Se agrego el paciente ${nuevoPaciente.getNombre()} correctamente.`);
