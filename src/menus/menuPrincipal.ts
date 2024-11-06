@@ -13,8 +13,7 @@ console.log(`\nSistema de gestion de ${veterinaria.getNombre()}.`);
       3. Ir a seccion Sucursales
       4. Ir a seccion Proveedores
       5. Atender cliente
-      6. Modificar datos de la veterinaria
-      7. Salir
+      6. Salir
       `);
 
     switch (accion) {
@@ -34,9 +33,6 @@ console.log(`\nSistema de gestion de ${veterinaria.getNombre()}.`);
         console.log("ATENCION AL PUBLICO");
         break;
       case "6":
-        console.log("ADMINISTRAR DATOS VETERINARIA");
-        break;
-      case "7":
         console.log("Saliendo...");
         enPrincipal = false;
         break;
