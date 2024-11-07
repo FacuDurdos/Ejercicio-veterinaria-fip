@@ -1,11 +1,11 @@
 import * as readlineSync from "readline-sync";
 import { Veterinaria } from "../models/Veterinaria";
 import { menuClientes } from "./menuClientes";
-<<<<<<< HEAD
+
 import { menuProveedor } from "./menuProveedor";
-=======
+
 import { menuAtender } from "./menuAtender";
->>>>>>> main
+
 
 export function menuPrincipal(veterinaria: Veterinaria) {
 let enPrincipal: boolean = true;
