@@ -1,7 +1,11 @@
 import * as readlineSync from "readline-sync";
 import { Veterinaria } from "../models/Veterinaria";
 import { menuClientes } from "./menuClientes";
+<<<<<<< HEAD
 import { menuProveedor } from "./menuProveedor";
+=======
+import { menuAtender } from "./menuAtender";
+>>>>>>> main
 
 export function menuPrincipal(veterinaria: Veterinaria) {
 let enPrincipal: boolean = true;
@@ -31,7 +35,7 @@ console.log(`\nSistema de gestion de ${veterinaria.getNombre()}.`);
         menuProveedor(veterinaria)
         break;
       case "5":
-        console.log("ATENCION AL PUBLICO");
+        menuAtender(veterinaria);
         break;
       case "6":
         console.log("Saliendo...");
