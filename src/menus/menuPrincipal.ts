@@ -3,6 +3,11 @@ import { Veterinaria } from "../models/Veterinaria";
 import { menuClientes } from "./menuClientes";
 import { menuPacientes } from "./menuPacientes";
 
+import { menuProveedor } from "./menuProveedor";
+
+import { menuAtender } from "./menuAtender";
+
+
 export function menuPrincipal(veterinaria: Veterinaria) {
 let enPrincipal: boolean = true;
 console.log(`\nSistema de gestion de ${veterinaria.getNombre()}.`);	
@@ -28,10 +33,10 @@ console.log(`\nSistema de gestion de ${veterinaria.getNombre()}.`);
         console.log("SECCION SUCURSALES");
         break;
       case "4":
-        console.log("SECCION PROVEEDORES");
+        menuProveedor(veterinaria)
         break;
       case "5":
-        console.log("ATENCION AL PUBLICO");
+        menuAtender(veterinaria);
         break;
       case "6":
         console.log("Saliendo...");
