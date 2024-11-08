@@ -1,6 +1,7 @@
 import * as readlineSync from "readline-sync";
 import { Veterinaria } from "../models/Veterinaria";
 import { menuClientes } from "./menuClientes";
+import { menuPacientes } from "./menuPacientes";
 
 import { menuProveedor } from "./menuProveedor";
 
@@ -26,7 +27,7 @@ console.log(`\nSistema de gestion de ${veterinaria.getNombre()}.`);
         menuClientes(veterinaria);
         break;
       case "2":
-        console.log("SECCION PACIENTES");
+        menuPacientes(veterinaria);
         break;
       case "3":
         console.log("SECCION SUCURSALES");
