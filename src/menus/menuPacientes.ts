@@ -4,7 +4,7 @@ import { Cliente } from '../models/Cliente';
 import { Paciente } from '../models/Paciente';
 
 function verMascotas(veterinaria: Veterinaria): void {
-    let clienteId: number = readlineSync.questionInt("Ingrese el ID del cliente: ");
+    let clienteId: string = readlineSync.question("Ingrese el ID del cliente: ");
     let cliente: Cliente | undefined = veterinaria.getClientes().find((cliente) => cliente.getId() === clienteId);
     if (cliente) {
         let mascotas: Paciente[] = veterinaria.getMascotas(clienteId);
@@ -22,7 +22,7 @@ function verMascotas(veterinaria: Veterinaria): void {
 function agregarPaciente(veterinaria: Veterinaria): void {
   let nombre: string = readlineSync.question("Ingrese el nombre de la mascota: ");
   let tipo: string = readlineSync.question("Ingrese el tipo de la mascota (perro, gato o exotica): ");
-  let clienteID: number = readlineSync.questionInt("Ingrese el ID del duenio de la mascota: ");
+  let clienteID: string = readlineSync.question("Ingrese el ID del duenio de la mascota: ");
 
   if (tipo !== "perro" && tipo !== "gato" && tipo !== "exotica") {
     console.error("Error: Tipo de mascota no valido. Por favor, ingrese 'perro', 'gato' o 'exotica'.");
@@ -36,12 +36,12 @@ function agregarPaciente(veterinaria: Veterinaria): void {
 
 function eliminarPaciente(veterinaria: Veterinaria): void {
   let nombre: string = readlineSync.question("Ingrese el nombre del paciente: ");
-  let clienteId: number = readlineSync.questionInt("Ingrese el ID del cliente a eliminar: ");
-  if (veterinaria.getPacientes().find((paciente) => paciente.getId() ===(clienteId))) {
-    veterinaria.eliminarPaciente(clienteId,nombre);
+  let clienteId: string = readlineSync.question("Ingrese el ID del cliente a eliminar: ");
+  if (veterinaria.getPacientes().find((paciente) => paciente.getId() ===(clienteId) && paciente.getNombre() === nombre)) {
+    veterinaria.eliminarPaciente(clienteId, nombre);
     console.log("Paciente eliminado correctamente.");
   } else {
-    console.error(`Error: No existe el Paciente con ID ${clienteId}.`);
+    console.error(`Error: No existe el paciente ${nombre} con ID ${clienteId}.`);
   }
 }
 
@@ -51,22 +51,26 @@ export function menuPacientes(veterinaria: Veterinaria): void {
     let enPacientes = true;
       while (enPacientes) {
       let nuevaAccion = readlineSync.question(`Seleccione que accion desea realizar:
-        1. Ver pacientes
-        2. Agregar paciente
-        3. Eliminar paciente
-        4. Volver al menu principal
+        1. Ver pacientes por cliente
+        2. Ver todos los pacientes
+        3. Agregar paciente
+        4. Eliminar paciente
+        5. Volver al menu principal
         `);
       switch (nuevaAccion) {
         case "1":
           verMascotas(veterinaria);
           break;
         case "2":
-          agregarPaciente(veterinaria)
+          console.table(veterinaria.getPacientes());
           break;
         case "3":
-          eliminarPaciente(veterinaria);
+          agregarPaciente(veterinaria)
           break;
         case "4":
+          eliminarPaciente(veterinaria);
+          break;
+        case "5":
           enPacientes = false;
           break;
         default:

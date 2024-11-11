@@ -1,7 +1,7 @@
 import { GeneradorID } from "../app/GeneradorID";
 
 export class Proveedor {
-  private id: number;
+  private id: string;
   private nombre: string;
   private telefono: number; 
 
@@ -12,7 +12,7 @@ export class Proveedor {
   }
 
   //Getters
-  public getId(): number {
+  public getId(): string {
     return this.id;
   }
   public getNombre(): string {

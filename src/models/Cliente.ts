@@ -3,7 +3,7 @@
 import { GeneradorID } from "../app/GeneradorID";
 
 export class Cliente {
-  private id: number;
+  private id: string;
   private nombre: string;
   private telefono: number;
   private esVip: boolean = false;
@@ -16,7 +16,7 @@ export class Cliente {
   }
 
   //Getters
-  public getId(): number {
+  public getId(): string {
     return this.id;
   }
   public getNombre(): string {

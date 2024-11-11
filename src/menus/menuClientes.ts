@@ -16,7 +16,7 @@ function verClientes(veterinaria: Veterinaria): void {
 }
 
 function verMascotas(veterinaria: Veterinaria): void {
-  let clienteId: number = readlineSync.questionInt("Ingrese el ID del cliente: ");
+  let clienteId: string = readlineSync.question("Ingrese el ID del cliente: ");
   let cliente: Cliente | undefined = veterinaria.getClientes().find((cliente) => cliente.getId() === clienteId);
   if (cliente) {
     let mascotas: Paciente[] = veterinaria.getMascotas(clienteId);
@@ -34,13 +34,13 @@ function verMascotas(veterinaria: Veterinaria): void {
 function agregarCliente(veterinaria: Veterinaria): void {
   let nombre: string = readlineSync.question("Ingrese el nombre del cliente: ");
   let telefono: number = readlineSync.questionInt("Ingrese el telefono del cliente: ");
-  let nuevoCliente: Cliente = new Cliente(nombre, telefono); // veterinariaFactory.ingresarCliente(nombre, telefono);
+  let nuevoCliente: Cliente = new Cliente(nombre, telefono); // veterinariaFactory.crearCliente(nombre, telefono);
   veterinaria.ingresarCliente(nuevoCliente);
   console.log("Cliente agregado correctamente.");
 }
 
 function eliminarCliente(veterinaria: Veterinaria): void {
-  let clienteIdEliminar: number = readlineSync.questionInt("Ingrese el ID del cliente a eliminar: ");
+  let clienteIdEliminar: string = readlineSync.question("Ingrese el ID del cliente a eliminar: ");
   if (veterinaria.getClientes().find((cliente) => cliente.getId() ===(clienteIdEliminar))) {
     veterinaria.eliminarCliente(clienteIdEliminar);
     console.log("Cliente eliminado correctamente.");

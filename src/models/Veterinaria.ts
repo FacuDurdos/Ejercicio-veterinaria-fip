@@ -7,7 +7,7 @@ import { GeneradorID } from "../app/GeneradorID";
 export class Veterinaria {
   private nombre: string;
   private direccion: string;
-  private id: number;
+  private id: string;
   private sucursales: Array<Sucursal>;
   private clientes: Array<Cliente>;
   private pacientes: Array<Paciente>;
@@ -23,7 +23,7 @@ export class Veterinaria {
     this.pacientes = [];
   }
 
-  public atender(clienteId: number): void {
+  public atender(clienteId: string): void {
     if (!this.verificarCliente(clienteId)) {
       console.error(`Error: El cliente con ID ${clienteId} no existe.`);
     } else {
@@ -36,7 +36,7 @@ export class Veterinaria {
   }
 
   //Getters
-  public getId(): number {
+  public getId(): string {
     return this.id;
   }
   public getNombre(): string {
@@ -58,7 +58,8 @@ export class Veterinaria {
     return this.clientes;
   }
 
-  public getDueño(mascotaId: number): Cliente | undefined {
+
+  public getDueño(mascotaId: string): Cliente | undefined {
     if (!this.verificarPaciente(mascotaId)) {
       console.error(`Error: La mascota con ID ${mascotaId} no existe.`);
       return undefined;
@@ -74,7 +75,7 @@ export class Veterinaria {
     }
   }
 
-  public getMascotas(clienteId: number): Paciente[] | undefined {
+  public getMascotas(clienteId: string): Paciente[] | undefined {
     if (!this.verificarCliente(clienteId)) {
       console.error(`Error: El cliente con ID ${clienteId} no existe.`);
       return undefined;
@@ -137,7 +138,7 @@ export class Veterinaria {
   }
 
   //Metodos delete
-  public eliminarSucursal(sucursalId: number): void {
+  public eliminarSucursal(sucursalId: string): void {
     if (this.verificarSucursal(sucursalId)) {
       this.sucursales = this.sucursales.filter((sucursal) => sucursal.getId() !== sucursalId);
       GeneradorID.eliminarId(sucursalId);
@@ -146,7 +147,7 @@ export class Veterinaria {
       console.error(`Error: La sucursal con ID ${sucursalId} no existe.`);
     }
   }
-  public eliminarProveedor(proveedorId: number): void {
+  public eliminarProveedor(proveedorId: string): void {
     if (this.verificarProveedor(proveedorId)) {
       this.proveedores = this.proveedores.filter((proveedor) => proveedor.getId() !== proveedorId);
       GeneradorID.eliminarId(proveedorId);
@@ -156,7 +157,7 @@ export class Veterinaria {
   }
 }
 
-  public eliminarCliente(clienteId: number): void {
+  public eliminarCliente(clienteId: string): void {
     if (this.verificarCliente(clienteId)) {
       this.clientes = this.clientes.filter((cliente) => cliente.getId() !== clienteId);
       this.pacientes = this.pacientes.filter((mascota) => mascota.getId() !== clienteId);
@@ -167,9 +168,9 @@ export class Veterinaria {
     }
   }
 
-  public eliminarPaciente(pacienteId: number, nombrePaciente: string): void {
+  public eliminarPaciente(pacienteId: string, nombrePaciente: string): void {
     if (this.verificarPaciente(pacienteId)) {
-      this.pacientes = this.pacientes.filter((paciente) => paciente.getId() !== pacienteId && paciente.getNombre() !== nombrePaciente);
+      this.pacientes = this.pacientes.filter((paciente) => !(paciente.getId() === pacienteId && paciente.getNombre() === nombrePaciente));
       console.log(`Se elimino el paciente ${nombrePaciente} con ID ${pacienteId} correctamente.`);
     } else {
       console.error(`Error: El paciente ${nombrePaciente} con ID ${pacienteId} no existe.`);
@@ -177,19 +178,19 @@ export class Veterinaria {
   }
 
   //Metodos internos
-  private verificarCliente(clienteId: number): boolean {
+  private verificarCliente(clienteId: string): boolean {
     return this.clientes.some((cliente) => cliente.getId() === clienteId);
   }
 
-  private verificarProveedor(proveedorId: number): boolean {
+  private verificarProveedor(proveedorId: string): boolean {
     return this.proveedores.some((proveedor) => proveedor.getId() === proveedorId);
   }
 
-  private verificarSucursal(sucursalId: number): boolean {
+  private verificarSucursal(sucursalId: string): boolean {
     return this.sucursales.some((sucursal) => sucursal.getId() === sucursalId);
   }
 
-  private verificarPaciente(pacienteId: number): boolean {
+  private verificarPaciente(pacienteId: string): boolean {
     return this.pacientes.some((paciente) => paciente.getId() === pacienteId);
   }
 }

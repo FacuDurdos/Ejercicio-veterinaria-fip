@@ -23,7 +23,7 @@ function verProveedor(veterinaria: Veterinaria): void {
 
 
   function eliminarProveedor(veterinaria: Veterinaria): void {
-    let ProveedorIdEliminar: number = readlineSync.questionInt("Ingrese el ID del proveedor a eliminar: ");
+    let ProveedorIdEliminar: string = readlineSync.question("Ingrese el ID del proveedor a eliminar: ");
     if (veterinaria.getProveedores().find((proveedor) => proveedor.getId() ===(ProveedorIdEliminar))) {
       veterinaria.eliminarProveedor(ProveedorIdEliminar);
       console.log("Proveedor eliminado correctamente.");
