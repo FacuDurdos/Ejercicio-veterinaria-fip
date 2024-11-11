@@ -1,7 +1,7 @@
 import { GeneradorID } from "../app/GeneradorID";
 
 export class Sucursal {
-  private id: number;
+  private id: string;
   private direccion: string;
   constructor(direccion: string) {
     this.id = GeneradorID.generarId();
@@ -9,7 +9,7 @@ export class Sucursal {
   }
 
   //Getters
-  getId(): number {
+  getId(): string {
     return this.id;
   }
   getDireccion(): string {

@@ -36,7 +36,7 @@ export function generarData(): Veterinaria {
 
 
     //Paciente sin duenio
-    veterinaria.ingresarPaciente(new Paciente("Paciente I", "perro", 0));
+    veterinaria.ingresarPaciente(new Paciente("Paciente I", "perro", "0"));
     
 
     return veterinaria;

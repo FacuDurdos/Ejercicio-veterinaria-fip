@@ -4,7 +4,7 @@ import { Cliente } from '../models/Cliente';
 
 export function menuAtender(veterinaria: Veterinaria): void {
   console.log("ATENCION AL PUBLICO");
-  let clienteId: number = readlineSync.questionInt(`\nIngrese el ID del cliente que desea atender: `);
+  let clienteId: string = readlineSync.question(`\nIngrese el ID del cliente que desea atender: `);
   let nombreMascota: string = readlineSync.question("Ingrese el nombre de la mascota: ");
   let cliente: Cliente | undefined = veterinaria.getClientes().find((cliente) => cliente.getId() === clienteId);
   if (cliente) {
