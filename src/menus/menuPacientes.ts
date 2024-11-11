@@ -27,11 +27,14 @@ function agregarPaciente(veterinaria: Veterinaria): void {
   if (tipo !== "perro" && tipo !== "gato" && tipo !== "exotica") {
     console.error("Error: Tipo de mascota no valido. Por favor, ingrese 'perro', 'gato' o 'exotica'.");
     return;
+  } else if (veterinaria.getClientes().find((cliente) => cliente.getId() === clienteID) === undefined) {
+      console.error(`Error: No existe el cliente con ID ${clienteID}.`);
+      return;
+    } else {
+      let nuevoPaciente: Paciente = new Paciente(nombre, tipo, clienteID);
+      veterinaria.ingresarPaciente(nuevoPaciente);
+      console.log("Paciente agregado correctamente.");
   }
-
-  let nuevoPaciente: Paciente = new Paciente(nombre, tipo, clienteID);
-  veterinaria.ingresarPaciente(nuevoPaciente);
-  console.log("Paciente agregado correctamente.");
 }
 
 function eliminarPaciente(veterinaria: Veterinaria): void {
