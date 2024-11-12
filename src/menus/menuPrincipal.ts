@@ -10,7 +10,8 @@ import { menuSucursal } from "./menuSucursales";
 export function menuPrincipal(veterinaria: Veterinaria) {
 let enPrincipal: boolean = true;
 console.log(`\n======= Sistema de gestion de ${veterinaria.getNombre()} =======`);	
-  
+console.log(`\n======= MENU PRINCIPAL =======`);
+
   while (enPrincipal) {
     let accion = readlineSync.question(`\nSeleccione que accion desea realizar:
         1. Ir a seccion Clientes
