@@ -49,7 +49,7 @@ function agregarPaciente(veterinaria: Veterinaria): void {
 
 function eliminarPaciente(veterinaria: Veterinaria): void {
   let nombre: string = readlineSync.question("Ingrese el nombre del paciente: ");
-  let clienteId: string = readlineSync.question("Ingrese el ID del cliente a eliminar: ");
+  let clienteId: string = readlineSync.question("Ingrese el ID del paciente a eliminar: ");
   if (veterinaria.getPacientes().find((paciente) => paciente.getId() ===(clienteId) && paciente.getNombre() === nombre)) {
     veterinaria.eliminarPaciente(clienteId, nombre);
     console.log("Paciente eliminado correctamente.");
