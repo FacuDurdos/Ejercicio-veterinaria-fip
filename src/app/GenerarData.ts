@@ -5,6 +5,8 @@ import { Proveedor } from "../models/Proveedor";
 import { Paciente } from "../models/Paciente";
 
 export function generarData(): Veterinaria {
+    console.log("------ Generando data para test... ------");
+
     let veterinaria: Veterinaria = new Veterinaria("Veterinaria Olavarria", "Av. Colon 1234");
 
     veterinaria.ingresarSucursal(new Sucursal("Mitre 1234"));
@@ -38,6 +40,6 @@ export function generarData(): Veterinaria {
     //Paciente sin duenio
     veterinaria.ingresarPaciente(new Paciente("Paciente I", "perro", "0"));
     
-
+    console.log("------ Data generada ------");
     return veterinaria;
 }

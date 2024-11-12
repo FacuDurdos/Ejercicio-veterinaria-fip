@@ -9,8 +9,9 @@ import { Paciente } from '../models/Paciente';
 function verClientes(veterinaria: Veterinaria): void {
   let clientes: Cliente[] = veterinaria.getClientes();
   if (clientes.length === 0) {
-    console.log("No existen clientes.");
+    console.log("\nNo existen clientes.");
   } else {
+    console.log(`\n======= Listado de clientes =======`);
     console.table(clientes);
   }
 }
@@ -36,7 +37,6 @@ function agregarCliente(veterinaria: Veterinaria): void {
   let telefono: number = readlineSync.questionInt("Ingrese el telefono del cliente: ");
   let nuevoCliente: Cliente = new Cliente(nombre, telefono); // veterinariaFactory.crearCliente(nombre, telefono);
   veterinaria.ingresarCliente(nuevoCliente);
-  console.log("Cliente agregado correctamente.");
 }
 
 function eliminarCliente(veterinaria: Veterinaria): void {
@@ -49,17 +49,30 @@ function eliminarCliente(veterinaria: Veterinaria): void {
   }
 }
 
+function modificarTelefono(veterinaria: Veterinaria): void {
+  let clienteIdModificar: string = readlineSync.question("Ingrese el ID del cliente a modificar: ");
+  let nuevoTelefono: number = readlineSync.questionInt("Ingrese el nuevo telefono del cliente: ");
+  let cliente: Cliente | undefined = veterinaria.getClientes().find((cliente) => cliente.getId() === clienteIdModificar);
+  if (cliente) {
+    cliente.setTelefono(nuevoTelefono);
+    console.log("Telefono modificado correctamente.");
+  } else if (!cliente) {
+    console.error(`Error: No existe el cliente con ID ${clienteIdModificar}.`);
+    }
+}
+
 export function menuClientes(veterinaria: Veterinaria): void {
-  console.log("SECCION CLIENTES");
+  console.log(`\n======= SECCION CLIENTES =======`);
   let enClientes = true;
     while (enClientes) {
-    let nuevaAccion = readlineSync.question(`Seleccione que accion desea realizar:
+    let nuevaAccion = readlineSync.question(`\nSeleccione que accion desea realizar:
       1. Ver clientes
       2. Ver mascotas de un cliente
       3. Agregar cliente
-      4. Eliminar cliente
-      5. Volver al menu principal
-      `);
+      4. Modificar telefono
+      5. Eliminar cliente
+      6. Volver al menu principal
+\nSu eleccion: `);
     switch (nuevaAccion) {
       case "1":
         verClientes(veterinaria);
@@ -71,9 +84,12 @@ export function menuClientes(veterinaria: Veterinaria): void {
         agregarCliente(veterinaria);
         break;
       case "4":
-        eliminarCliente(veterinaria);
+        modificarTelefono(veterinaria);
         break;
       case "5":
+        eliminarCliente(veterinaria);
+        break;
+      case "6":
         enClientes = false;
         break;
       default:

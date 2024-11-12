@@ -3,7 +3,7 @@ import { Veterinaria } from "../models/Veterinaria";
 import { Cliente } from '../models/Cliente';
 import { Paciente } from '../models/Paciente';
 
-function verMascotas(veterinaria: Veterinaria): void {
+function verMascotasPorID(veterinaria: Veterinaria): void {
     let clienteId: string = readlineSync.question("Ingrese el ID del cliente: ");
     let cliente: Cliente | undefined = veterinaria.getClientes().find((cliente) => cliente.getId() === clienteId);
     if (cliente) {
@@ -17,6 +17,16 @@ function verMascotas(veterinaria: Veterinaria): void {
     } else {
         console.error(`Error: No existe el cliente con ID ${clienteId}.`);
     }
+}
+
+function verMascotas(veterinaria: Veterinaria): void {
+  let mascotas: Paciente[] = veterinaria.getPacientes();
+  if (mascotas.length === 0) {
+    console.log("\nNo existen mascotas.");
+  } else {
+    console.log(`\n======= Listado de mascotas =======`);
+    console.table(mascotas);
+  }
 }
 
 function agregarPaciente(veterinaria: Veterinaria): void {
@@ -50,22 +60,22 @@ function eliminarPaciente(veterinaria: Veterinaria): void {
 
 
 export function menuPacientes(veterinaria: Veterinaria): void {
-    console.log("SECCION PACIENTES");
+  console.log(`\n======= SECCION PACIENTES =======`);
     let enPacientes = true;
       while (enPacientes) {
-      let nuevaAccion = readlineSync.question(`Seleccione que accion desea realizar:
+      let nuevaAccion = readlineSync.question(`\nSeleccione que accion desea realizar:
         1. Ver pacientes por cliente
         2. Ver todos los pacientes
         3. Agregar paciente
         4. Eliminar paciente
         5. Volver al menu principal
-        `);
+\nSu eleccion: `);
       switch (nuevaAccion) {
         case "1":
-          verMascotas(veterinaria);
+          verMascotasPorID(veterinaria);
           break;
         case "2":
-          console.table(veterinaria.getPacientes());
+          verMascotas(veterinaria);
           break;
         case "3":
           agregarPaciente(veterinaria)
