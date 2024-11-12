@@ -4,6 +4,7 @@ import { menuClientes } from "./menuClientes";
 import { menuPacientes } from "./menuPacientes";
 import { menuProveedor } from "./menuProveedor";
 import { menuAtender } from "./menuAtender";
+import { menuSucursal } from "./menuSucursales";
 
 
 export function menuPrincipal(veterinaria: Veterinaria) {
@@ -28,7 +29,7 @@ console.log(`\n======= Sistema de gestion de ${veterinaria.getNombre()} =======`
         menuPacientes(veterinaria);
         break;
       case "3":
-        console.log("SECCION SUCURSALES");
+        menuSucursal(veterinaria);
         break;
       case "4":
         menuProveedor(veterinaria)
