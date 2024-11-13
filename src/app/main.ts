@@ -1,11 +1,8 @@
-// TODO: CLASE DATOS CON PROPS ID/NOMBRE/DIRECCION/TELEFONO
-
-
 import { menuPrincipal } from "../menus/menuPrincipal";
 import { Veterinaria } from "../models/Veterinaria";
-import { generarData } from "./GenerarData";
 
-let veterinaria = generarData();
+
+let veterinaria = new Veterinaria("Veterinaria Olavarria", "Colon 1234");
 
 function main(veterinaria: Veterinaria): void {
   menuPrincipal(veterinaria);

@@ -1,5 +1,3 @@
-//TODO: FACTORY METHOD para crear clientes. veterinariaFactory.crearCliente("Juan Perez", 12345678);
-
 import { GeneradorID } from "../app/GeneradorID";
 
 export class Cliente {

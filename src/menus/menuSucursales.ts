@@ -12,12 +12,6 @@ function verSucursales(veterinaria: Veterinaria): void {
   }
 }
 
-function agregarSucursal(veterinaria: Veterinaria): void {
-  let direccion: string = readlineSync.question("Ingrese la direccion de la nueva sucursal: ");
-  let nuevaSucursal: Sucursal = new Sucursal(direccion);
-  veterinaria.ingresarSucursal(nuevaSucursal);
-}
-
 function editarSucursal(veterinaria: Veterinaria): void {
   let sucursalId: string = readlineSync.question("Ingrese el ID de la sucursal a editar: ");
   let nuevaDireccion: string = readlineSync.question("Ingrese la nueva direccion de la sucursal: ");
@@ -30,20 +24,11 @@ function editarSucursal(veterinaria: Veterinaria): void {
   }
 }
 
-function eliminarSucursal(veterinaria: Veterinaria): void {
-  let sucursalId: string = readlineSync.question("Ingrese el ID de la sucursal a eliminar: ");
-  let sucursal: Sucursal | undefined = veterinaria.getSucursales().find((sucursal) => sucursal.getId() === sucursalId);
-  if (sucursal) {
-    veterinaria.eliminarSucursal(sucursalId);
-  } else {
-    console.error(`Error: No existe la sucursal con ID ${sucursalId}.`);
-  }
-}
-
 export function menuSucursal(veterinaria: Veterinaria): void {
-  console.log(`\n======= SECCION SUCURSALES =======`);
+
   let enSucursales = true;
   while (enSucursales) {
+    console.log(`\n======= SECCION SUCURSALES =======`);
     let nuevaAccion = readlineSync.question(`\nSeleccione que accion desea realizar:
       1. Ver sucursales
       2. Agregar sucursal
@@ -56,13 +41,13 @@ export function menuSucursal(veterinaria: Veterinaria): void {
         verSucursales(veterinaria);
         break;
       case "2":
-        agregarSucursal(veterinaria);
+        veterinaria.ingresarSucursal();
         break;
       case "3":
         editarSucursal(veterinaria);
         break;
       case "4":
-        eliminarSucursal(veterinaria);
+        veterinaria.eliminarSucursal();
         break;
       case "5":
         enSucursales = false;
