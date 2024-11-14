@@ -1,12 +1,15 @@
 import * as readlineSync from 'readline-sync';
 import { Veterinaria } from "../models/Veterinaria";
-import { Cliente } from '../models/Cliente';
 import { Paciente } from '../models/Paciente';
 
 function verMascotasPorID(veterinaria: Veterinaria): void {
-  console.table(veterinaria.getClientes());
-  veterinaria.getMascotas();
-  
+  if (veterinaria.getClientes().length === 0) {
+    console.log("\nNo existen clientes.");
+  } else {
+    console.log(`\n======= Listado de clientes =======`);
+    console.table(veterinaria.getClientes());
+    veterinaria.getMascotas();
+  }
 }
 
 function verMascotas(veterinaria: Veterinaria): void {
