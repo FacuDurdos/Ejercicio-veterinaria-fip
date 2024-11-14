@@ -14,8 +14,12 @@ function verClientes(veterinaria: Veterinaria): void {
 }
 
 function verMascotas(veterinaria: Veterinaria): void {
-  console.table(veterinaria.getClientes());
-  veterinaria.getMascotas();
+  if (veterinaria.getClientes().length === 0) {
+    console.log("\nNo existen clientes ni mascotas.");
+  } else {
+    console.table(veterinaria.getClientes());
+    veterinaria.getMascotas(); 
+  }
 }
 
 
