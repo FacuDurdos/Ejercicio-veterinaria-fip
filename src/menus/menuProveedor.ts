@@ -14,6 +14,7 @@ function verProveedores(veterinaria: Veterinaria): void {
 }
 
 function editarProveedor(veterinaria: Veterinaria): void {
+  console.table(veterinaria.getProveedores());
   let proveedorId: string = readlineSync.question("Ingrese el ID del proveedor a editar: ");
   let proveedor: Proveedor | undefined = veterinaria.getProveedores().find((proveedor) => proveedor.getId() === proveedorId);
   if (proveedor) {
