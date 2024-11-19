@@ -13,10 +13,11 @@ function verSucursales(veterinaria: Veterinaria): void {
 }
 
 function editarSucursal(veterinaria: Veterinaria): void {
+  console.table(veterinaria.getSucursales());
   let sucursalId: string = readlineSync.question("Ingrese el ID de la sucursal a editar: ");
-  let nuevaDireccion: string = readlineSync.question("Ingrese la nueva direccion de la sucursal: ");
   let sucursal: Sucursal | undefined = veterinaria.getSucursales().find((sucursal) => sucursal.getId() === sucursalId);
   if (sucursal) {
+    let nuevaDireccion: string = readlineSync.question("Ingrese la nueva direccion de la sucursal: ");
     sucursal.setDireccion(nuevaDireccion);
     console.log("Direccion de la sucursal editada correctamente.");
   } else {
