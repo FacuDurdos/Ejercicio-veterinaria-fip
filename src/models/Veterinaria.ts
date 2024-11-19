@@ -28,20 +28,22 @@ export class Veterinaria {
   public atender(): void {
     console.table(this.getClientes());
     let clienteId: string = readlineSync.question(`\nIngrese el ID del cliente que desea atender: `);
-    console.table(this.getPacientes());
-    let nombreMascota: string = readlineSync.question("Ingrese el nombre de la mascota: ");
     let cliente: Cliente | undefined = this.verificarCliente(clienteId);
     if (cliente) {
-      if (!(this.getPacientes().find((mascota) => mascota.getNombre() === nombreMascota))) {
-        console.error(`Error: No existe la mascota con el nombre ${nombreMascota} del cliente ${cliente.getNombre()} con ID ${clienteId}.`);
+      console.table(this.getPacientes());
+      let nombreMascota: string = readlineSync.question("\nIngrese el nombre de la mascota: ");
+      let mascota = this.getPacientes().find((mascota) => mascota.getNombre() === nombreMascota);
+      if (!mascota) {
+        console.error(`\nError: No existe la mascota con el nombre ${nombreMascota} del cliente ${cliente.getNombre()} con ID ${clienteId}.`);
       } else {
         cliente.setVisitas();
-        console.log(`Se atendio al cliente ${cliente.getNombre()}. Total visitas: ${cliente.getVisitas()}`);
+        console.log(`\nSe atendio al cliente ${cliente.getNombre()}. Total visitas: ${cliente.getVisitas()}`);
       }
+    } else {
+      console.error(`\nError: El cliente con ID ${clienteId} no existe.`);
     }
-    return console.error(cliente);
   }
-  
+
 
   //Getters
   public getId(): string {
@@ -49,9 +51,9 @@ export class Veterinaria {
   }
   public getNombre(): string {
     return this.nombre;
-  } 
-  public getDireccion(): string {    
-    return this.direccion;  
+  }
+  public getDireccion(): string {
+    return this.direccion;
   }
   public getSucursales(): Array<Sucursal> {
     return this.sucursales;
@@ -80,8 +82,8 @@ export class Veterinaria {
         return;
       }
     } else {
-    console.error(`Error: El cliente con ID ${clienteId} no existe.`);
-    return;
+      console.error(`Error: El cliente con ID ${clienteId} no existe.`);
+      return;
     }
   }
 
@@ -105,7 +107,7 @@ export class Veterinaria {
   public ingresarProveedor(): void {
     const nombre: string = readlineSync.question("Ingrese el nombre del proveedor: ");
     const telefono: number = readlineSync.questionInt("Ingrese el telefono del proveedor: ");
-    const nuevoProveedor: Proveedor = new Proveedor(nombre,telefono)
+    const nuevoProveedor: Proveedor = new Proveedor(nombre, telefono)
     this.proveedores.push(nuevoProveedor);
     console.log(`\nSe agrego el proveedor ${nuevoProveedor.getNombre()} correctamente.`);
   }
@@ -114,9 +116,9 @@ export class Veterinaria {
   public ingresarCliente(): void {
     const nombre: string = readlineSync.question("Ingrese el nombre del cliente: ");
     const telefono: number = readlineSync.questionInt("Ingrese el telefono del cliente: ");
-    const nuevoCliente : Cliente = new Cliente(nombre,telefono)
+    const nuevoCliente: Cliente = new Cliente(nombre, telefono)
     this.clientes.push(nuevoCliente);
-    console.log(`\nSe agrego el cliente ${nuevoCliente.getNombre()} correctamente.`); 
+    console.log(`\nSe agrego el cliente ${nuevoCliente.getNombre()} correctamente.`);
   }
 
   public ingresarPaciente(): void {
@@ -162,8 +164,8 @@ export class Veterinaria {
       console.log(`\nSe elimino el proveedor con ID ${proveedorId} correctamente.`);
     } else {
       console.error(`\nError: El proveedor con ID ${proveedorId} no existe.`);
+    }
   }
-}
 
   public eliminarCliente(): void {
     console.table(this.getClientes());
@@ -213,7 +215,7 @@ export class Veterinaria {
     } else {
       `Error: No existe la sucursal con ID ${sucursalId}.`;
     }
- }
+  }
 
   private verificarPaciente(pacienteId: string): Paciente | undefined {
     const paciente: Paciente | undefined = this.pacientes.find((paciente) => paciente.getId() === pacienteId);
