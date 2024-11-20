@@ -12,19 +12,6 @@ function verSucursales(veterinaria: Veterinaria): void {
   }
 }
 
-function editarSucursal(veterinaria: Veterinaria): void {
-  console.table(veterinaria.getSucursales());
-  let sucursalId: string = readlineSync.question("\nIngrese el ID de la sucursal a editar: ");
-  let sucursal: Sucursal | undefined = veterinaria.getSucursales().find((sucursal) => sucursal.getId() === sucursalId);
-  if (sucursal) {
-    let nuevaDireccion: string = readlineSync.question("\nIngrese la nueva direccion de la sucursal: ");
-    sucursal.setDireccion(nuevaDireccion);
-    console.log("\nDireccion de la sucursal editada correctamente.");
-  } else {
-    console.error(`\nError: No existe la sucursal con ID ${sucursalId}.`);
-  }
-}
-
 export function menuSucursal(veterinaria: Veterinaria): void {
 
   let enSucursales = true;
@@ -33,7 +20,7 @@ export function menuSucursal(veterinaria: Veterinaria): void {
     let nuevaAccion = readlineSync.question(`\nSeleccione que accion desea realizar:
       1. Ver sucursales
       2. Agregar sucursal
-      3. Editar direccion de sucursal
+      3. Editar sucursal
       4. Eliminar sucursal
       5. Volver al menu principal
 \nSu eleccion: `);
@@ -45,7 +32,7 @@ export function menuSucursal(veterinaria: Veterinaria): void {
         veterinaria.ingresarSucursal();
         break;
       case "3":
-        editarSucursal(veterinaria);
+        veterinaria.editar("sucursal");
         break;
       case "4":
         veterinaria.eliminarSucursal();
@@ -54,7 +41,7 @@ export function menuSucursal(veterinaria: Veterinaria): void {
         enSucursales = false;
         break;
       default:
-        console.error("\nError: Opcion no valida");
+        console.error(`\nError: Opcion no valida`);
         break;
     }
   }

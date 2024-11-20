@@ -1,10 +1,9 @@
 import * as readlineSync from "readline-sync";
 import { Veterinaria } from "../models/Veterinaria";
-import { menuClientes } from "./menuClientes";
-import { menuPacientes } from "./menuPacientes";
-import { menuProveedor } from "./menuProveedor";
-import { menuAtender } from "./menuAtender";
-import { menuSucursal } from "./menuSucursales";
+import { menuClientes } from "./menu-clientes";
+import { menuPacientes } from "./menu-pacientes";
+import { menuProveedor } from "./menu-proveedores";
+import { menuSucursal } from "./menu-sucursales";
 
 
 export function menuPrincipal(veterinaria: Veterinaria) {
@@ -37,14 +36,15 @@ export function menuPrincipal(veterinaria: Veterinaria) {
         menuProveedor(veterinaria)
         break;
       case "5":
-        menuAtender(veterinaria);
+        console.log(`\n======= ATENCION AL PUBLICO =======`);
+        veterinaria.atender();;
         break;
       case "6":
         console.log("Saliendo...");
         enPrincipal = false;
         break;
       default:
-        console.error("\nError: Opcion no valida");
+        console.error(`\nError: Opcion no valida`);
         break;
     }
   }
