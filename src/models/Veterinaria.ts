@@ -70,19 +70,19 @@ export class Veterinaria {
 
 
   public getMascotas(): Paciente[] | undefined {
-    const clienteId = readlineSync.question("Ingrese el id del cliente: ")
+    const clienteId = readlineSync.question("\nIngrese el id del cliente: ")
     let cliente: Cliente | undefined = this.verificarCliente(clienteId);
     if (cliente instanceof Cliente) {
       let mascotas: Paciente[] = this.pacientes.filter((mascota) => mascota.getId() === clienteId);
       if (mascotas.length > 0) {
-        console.log(`Las mascotas del cliente ${cliente.getNombre()} con ID ${clienteId} son: ${mascotas.map(m => m.getNombre()).join(", ")}.`);
+        console.log(`\nLas mascotas del cliente ${cliente.getNombre()} con ID ${clienteId} son: ${mascotas.map(m => m.getNombre()).join(", ")}.`);
         return mascotas;
       } else {
-        console.error(`Error: No existen mascotas del cliente con ID ${clienteId}.`);
+        console.error(`\nError: No existen mascotas del cliente con ID ${clienteId}.`);
         return;
       }
     } else {
-      console.error(`Error: El cliente con ID ${clienteId} no existe.`);
+      console.error(`\nError: El cliente con ID ${clienteId} no existe.`);
       return;
     }
   }
@@ -97,7 +97,7 @@ export class Veterinaria {
 
   //Metodos add
   public ingresarSucursal(): void {
-    const direccionSucursal: string = readlineSync.question(`Ingrese la direccion de la sucursal a ingresar: `)
+    const direccionSucursal: string = readlineSync.question(`\nIngrese la direccion de la sucursal a ingresar: `)
     const telefono: number = readlineSync.questionInt("Ingrese el telefono de la sucursal: ");
     const sucursal: Sucursal = new Sucursal(direccionSucursal, telefono)
     this.sucursales.push(sucursal);
@@ -105,7 +105,7 @@ export class Veterinaria {
   }
 
   public ingresarProveedor(): void {
-    const nombre: string = readlineSync.question("Ingrese el nombre del proveedor: ");
+    const nombre: string = readlineSync.question("\nIngrese el nombre del proveedor: ");
     const telefono: number = readlineSync.questionInt("Ingrese el telefono del proveedor: ");
     const nuevoProveedor: Proveedor = new Proveedor(nombre, telefono)
     this.proveedores.push(nuevoProveedor);
@@ -114,7 +114,7 @@ export class Veterinaria {
 
 
   public ingresarCliente(): void {
-    const nombre: string = readlineSync.question("Ingrese el nombre del cliente: ");
+    const nombre: string = readlineSync.question("\nIngrese el nombre del cliente: ");
     const telefono: number = readlineSync.questionInt("Ingrese el telefono del cliente: ");
     const nuevoCliente: Cliente = new Cliente(nombre, telefono)
     this.clientes.push(nuevoCliente);
@@ -123,14 +123,14 @@ export class Veterinaria {
 
   public ingresarPaciente(): void {
     console.table(this.getClientes());
-    let nombre: string = readlineSync.question("Ingrese el nombre de la mascota: ");
+    let nombre: string = readlineSync.question("\nIngrese el nombre de la mascota: ");
     let tipo: string = readlineSync.question("Ingrese el tipo de la mascota (perro, gato o exotica): ");
     let clienteID: string = readlineSync.question("Ingrese el ID del duenio de la mascota: ");
     if (tipo !== "perro" && tipo !== "gato" && tipo !== "exotica") {
-      console.error("Error: Tipo de mascota no valido. Por favor, ingrese 'perro', 'gato' o 'exotica'.");
+      console.error("\nError: Tipo de mascota no valido. Por favor, ingrese 'perro', 'gato' o 'exotica'.");
       return;
     } else if (this.getClientes().find((cliente) => cliente.getId() === clienteID) === undefined) {
-      console.error(`Error: No existe el cliente con ID ${clienteID}.`);
+      console.error(`\nError: No existe el cliente con ID ${clienteID}.`);
       return;
     } else {
       let nuevoPaciente: Paciente = new Paciente(nombre, tipo, clienteID);
@@ -146,7 +146,7 @@ export class Veterinaria {
   //Metodos delete
   public eliminarSucursal(): void {
     console.table(this.getSucursales());
-    const sucursalId = readlineSync.question("Ingrese el id de la sucursal: ")
+    const sucursalId = readlineSync.question("\nIngrese el id de la sucursal: ")
     if (this.verificarSucursal(sucursalId)) {
       this.sucursales = this.sucursales.filter((sucursal) => sucursal.getId() !== sucursalId);
       GeneradorID.eliminarId(sucursalId);
@@ -157,7 +157,7 @@ export class Veterinaria {
   }
   public eliminarProveedor(): void {
     console.table(this.getProveedores());
-    const proveedorId = readlineSync.question("Ingrese el id del proveedor: ");
+    const proveedorId = readlineSync.question("\nIngrese el id del proveedor: ");
     if (this.verificarProveedor(proveedorId)) {
       this.proveedores = this.proveedores.filter((proveedor) => proveedor.getId() !== proveedorId);
       GeneradorID.eliminarId(proveedorId);
@@ -169,7 +169,7 @@ export class Veterinaria {
 
   public eliminarCliente(): void {
     console.table(this.getClientes());
-    const clienteId = readlineSync.question("Ingrese el id del cliente: ");
+    const clienteId = readlineSync.question("\nIngrese el id del cliente: ");
     if (this.verificarCliente(clienteId)) {
       this.clientes = this.clientes.filter((cliente) => cliente.getId() !== clienteId);
       this.pacientes = this.pacientes.filter((mascota) => mascota.getId() !== clienteId);
@@ -204,7 +204,7 @@ export class Veterinaria {
     if (proveedor) {
       return proveedor;
     } else {
-      `Error: No existe el proveedor con ID ${proveedorId}.`;
+      `\nError: No existe el proveedor con ID ${proveedorId}.`;
     }
   }
 
@@ -213,7 +213,7 @@ export class Veterinaria {
     if (sucursal) {
       return sucursal;
     } else {
-      `Error: No existe la sucursal con ID ${sucursalId}.`;
+      `\nError: No existe la sucursal con ID ${sucursalId}.`;
     }
   }
 
@@ -222,7 +222,7 @@ export class Veterinaria {
     if (paciente) {
       return paciente;
     } else {
-      `Error: No existe el paciente con ID ${pacienteId}.`;
+      `\nError: No existe el paciente con ID ${pacienteId}.`;
     }
   }
 }

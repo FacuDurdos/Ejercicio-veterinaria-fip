@@ -44,7 +44,7 @@ export function menuPrincipal(veterinaria: Veterinaria) {
         enPrincipal = false;
         break;
       default:
-        console.error("Error: Opcion no valida");
+        console.error("\nError: Opcion no valida");
         break;
     }
   }

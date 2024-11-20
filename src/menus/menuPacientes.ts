@@ -53,7 +53,7 @@ export function menuPacientes(veterinaria: Veterinaria): void {
         enPacientes = false;
         break;
       default:
-        console.error("Error: Opcion no valida");
+        console.error("\nError: Opcion no valida");
         break;
     }
   }
