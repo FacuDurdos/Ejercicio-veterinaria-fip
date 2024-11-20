@@ -2,7 +2,6 @@ import * as readlineSync from 'readline-sync';
 import { Veterinaria } from "../models/Veterinaria";
 import { Cliente } from '../models/Cliente';
 
-
 function verClientes(veterinaria: Veterinaria): void {
   let clientes: Cliente[] = veterinaria.getClientes();
   if (clientes.length === 0) {
@@ -13,26 +12,12 @@ function verClientes(veterinaria: Veterinaria): void {
   }
 }
 
-function verMascotas(veterinaria: Veterinaria): void {
+function getPacientesPorId(veterinaria: Veterinaria): void {
   if (veterinaria.getClientes().length === 0) {
     console.log("\nNo existen clientes ni mascotas.");
   } else {
     console.table(veterinaria.getClientes());
-    veterinaria.getMascotas(); 
-  }
-}
-
-
-function modificarTelefono(veterinaria: Veterinaria): void {
-  console.table(veterinaria.getClientes());
-  let clienteIdModificar: string = readlineSync.question("\nIngrese el ID del cliente a modificar: ");
-  let cliente: Cliente | undefined = veterinaria.getClientes().find((cliente) => cliente.getId() === clienteIdModificar);
-  if (cliente) {
-    let nuevoTelefono: number = readlineSync.questionInt("\nIngrese el nuevo telefono del cliente: ");
-    cliente.setTelefono(nuevoTelefono);
-    console.log("\nTelefono modificado correctamente.");
-  } else if (!cliente) {
-    console.error(`\nError: No existe el cliente con ID ${clienteIdModificar}.`);
+    veterinaria.getPacientesPorId(); 
   }
 }
 
@@ -44,7 +29,7 @@ export function menuClientes(veterinaria: Veterinaria): void {
       1. Ver clientes
       2. Ver mascotas de un cliente
       3. Agregar cliente
-      4. Modificar telefono
+      4. Editar cliente
       5. Eliminar cliente
       6. Volver al menu principal
 \nSu eleccion: `);
@@ -53,13 +38,13 @@ export function menuClientes(veterinaria: Veterinaria): void {
         verClientes(veterinaria);
         break;
       case "2":
-        verMascotas(veterinaria);
+        getPacientesPorId(veterinaria);
         break;
       case "3":
         veterinaria.ingresarCliente();
         break;
       case "4":
-        modificarTelefono(veterinaria);
+        veterinaria.editar("cliente");
         break;
       case "5":
         veterinaria.eliminarCliente();
@@ -68,7 +53,7 @@ export function menuClientes(veterinaria: Veterinaria): void {
         enClientes = false;
         break;
       default:
-        console.error("\nError: Opcion no valida");
+        console.error(`\nError: Opcion no valida`);
         break;
     }
   }
