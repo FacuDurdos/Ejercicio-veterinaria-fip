@@ -8,7 +8,11 @@ export class SucursalRepository {
   private sucursales: Sucursal[];
 
   constructor() {
-    this.sucursales = [];
+    this.sucursales = [
+      new Sucursal("Alberdi 1243", 123456789),
+      new Sucursal("San Martin 1234", 987654321),
+      new Sucursal("Belgrano 1234", 123456789),
+    ];
   }  
 
   public getSucursales(): Sucursal[] {

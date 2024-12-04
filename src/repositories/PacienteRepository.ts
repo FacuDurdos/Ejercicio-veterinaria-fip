@@ -21,6 +21,10 @@ export class PacienteRepository {
     return pacientesFiltrados;
   }
 
+  public eliminarPacientesPorCliente(clienteId: string): void {
+    this.pacientes = this.pacientes.filter(paciente => paciente.getId() !== clienteId);
+}
+
   public ingresarPaciente(paciente: Paciente): void {
     this.pacientes.push(paciente);
   }

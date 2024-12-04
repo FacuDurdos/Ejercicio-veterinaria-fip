@@ -7,7 +7,11 @@ export class ProveedorRepository {
   private proveedores: Proveedor[];
 
   constructor() {
-    this.proveedores = [];
+    this.proveedores = [
+      new Proveedor("Alimentos Balanceados", 123456789, "Urquiza 4567"),
+      new Proveedor("Insumos veterinaria", 987654321, "Sarmiento 1234"),
+      new Proveedor("Acuarios", 123456789, "Pringles 7842"),
+    ];
   }
 
   public getProveedores(): Proveedor[] {
