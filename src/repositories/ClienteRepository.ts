@@ -10,8 +10,17 @@ export class ClienteRepository {
   private pacienteRepo: PacienteRepository;
 
   constructor() {
-    this.clientes = [];
+    this.clientes = [
+      new Cliente("Diego", 123456789, "Funes 5123"),
+      new Cliente("Alexis", 987654321, "Azopardo 5456"),
+      new Cliente("Facundo", 546578749, "Del valle 2789"),
+      new Cliente("Lionel", 45648979, "Avellaneda 7489"),
+    ];
     this.pacienteRepo = new PacienteRepository();
+    this.pacienteRepo.ingresarPaciente(new Paciente("Negro", "perro", this.clientes[0].getId()));
+    this.pacienteRepo.ingresarPaciente(new Paciente("Canela", "gato", this.clientes[1].getId()));
+    this.pacienteRepo.ingresarPaciente(new Paciente("Luna", "exotica", this.clientes[2].getId()));
+    this.pacienteRepo.ingresarPaciente(new Paciente("Francia", "exotica", this.clientes[3].getId()));
   }
 
 //Getters
@@ -81,7 +90,7 @@ export class ClienteRepository {
         const clienteId: string = solicitarDatos('id', ' del cliente a eliminar');
         if (this.getClientePorId(clienteId)) {
           this.clientes = this.clientes.filter(cliente => cliente.getId() !== clienteId);
-          this.pacienteRepo.filterPacientes(clienteId, false, undefined);
+          this.pacienteRepo.eliminarPacientesPorCliente(clienteId);
           GeneradorID.eliminarId(clienteId);
           console.log(`\nSe elimino el cliente con ID ${clienteId} y sus mascotas correctamente.`);
         } else {
